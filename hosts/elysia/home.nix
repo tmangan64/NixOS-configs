@@ -7,7 +7,10 @@
 
   imports = [
   ../../modules/home-manager/terminal.nix
+  ../../modules/features/productivity.nix
 ];
+
+  nixpkgs.config.allowUnfree = true;
 
 }
 

@@ -33,13 +33,15 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  programs.hyprland.enable = false;
+  # Enable Wayland
+  services.xserver = {
+  enable = true;
+  displayManager.gdm = {
+    enable = true;
+    wayland = true;  # Enable Wayland
+  };
+  desktopManager.gnome.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -92,6 +94,14 @@
   #kitty fix
   hardware.graphics.enable = true;
 
+  # Enable Docker
+  virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
+
+  services.lidarr.enable = true;
+  services.prowlarr.enable = true;
+  services.qbittorrent.enable = true;
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "mizutani";
@@ -109,13 +119,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
 	vscode
 	discord
 	github-desktop
   
-  #not entirely sure
+  #terminal
   kitty
 
   #npm
@@ -127,8 +135,6 @@
 
   #spotify
   spotify
-
-
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

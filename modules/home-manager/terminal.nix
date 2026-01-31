@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.fish = {
@@ -25,5 +25,10 @@
 
   home.packages = with pkgs; [
     fastfetch
+    inputs.curd.packages.${pkgs.system}.default
+    kew
+    lidarr
+    prowlarr
+    qbittorrent
   ];
 }
