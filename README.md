@@ -1,10 +1,6 @@
 # NixOS Configuration
 
-A declarative NixOS system configuration using Nix flakes and home-manager. This repository contains the complete system setup for the Elysia host.
-
-## Overview
-
-This project uses Nix flakes to manage dependencies and configure a NixOS system with reproducible builds. The configuration is split into system-level and user-level (home-manager) settings, allowing for modular and maintainable configuration.
+A declarative NixOS system configuration using Nix flakes and home-manager. This repository contains the complete non- home-manager configuration for the 'canto' Thinkpad and the 'elysia' desktop.
 
 ## Project Structure
 
@@ -12,11 +8,11 @@ This project uses Nix flakes to manage dependencies and configure a NixOS system
 .
 ├── flake.nix                          # Flake configuration and inputs
 ├── hosts/                             # Per-host configurations
-│   ├── canto/                         # Canto host (inactive)
+│   ├── canto/                         # Canto host (thinkpad)
 │   │   ├── configuration.nix
 │   │   ├── hardware-configuration.nix
 │   │   └── home.nix
-│   └── elysia/                        # Elysia host (active)
+│   └── elysia/                        # Elysia host (desktop)
 │       ├── configuration.nix
 │       ├── hardware-configuration.nix
 │       └── home.nix
@@ -25,61 +21,6 @@ This project uses Nix flakes to manage dependencies and configure a NixOS system
     │   └── productivity.nix
     └── home-manager/
         └── terminal.nix
-```
-
-## Prerequisites
-
-- NixOS with Nix flakes enabled
-- Git for cloning the repository
-- At least 1GB of free disk space for initial configuration
-
-## Getting Started
-
-### Initial Setup
-
-1. Clone this repository to your system:
-   ```bash
-   git clone <repository-url> /etc/nixos
-   ```
-
-2. Adjust the hostname in `flake.nix` if needed. Currently configured for:
-   - `elysia` (primary configuration)
-   - `canto` (alternative configuration)
-
-3. Review and update hardware-specific configurations:
-   ```bash
-   sudo nixos-generate-config --show-hardware-config > /tmp/hw.nix
-   ```
-   Compare and merge with `hosts/elysia/hardware-configuration.nix`.
-
-### Building and Applying Configuration
-
-To apply the configuration to your system:
-
-```bash
-sudo nixos-rebuild switch --flake .#elysia
-```
-
-For testing changes without switching:
-
-```bash
-sudo nixos-rebuild test --flake .#elysia
-```
-
-To build without applying:
-
-```bash
-sudo nixos-rebuild build --flake .#elysia
-```
-
-### Home Manager Setup
-
-Home-manager is integrated into the system configuration and is automatically managed by NixOS. User-specific settings are defined in `hosts/elysia/home.nix` and referenced modules.
-
-To apply home-manager changes:
-
-```bash
-home-manager switch --flake .#mizutani@elysia
 ```
 
 ## Configuration Details
