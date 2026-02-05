@@ -19,7 +19,7 @@
     # use "nixos", or your hostname as the name of the configuration
     # it's a better practice than "default" shown in the video
     nixosConfigurations.elysia = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = { inherit inputs self; };
       modules = [
         ./hosts/elysia/configuration.nix
         inputs.home-manager.nixosModules.default

@@ -8,6 +8,11 @@
 
     # LibreOffice suite
     libreoffice
+
+    #soulseek music torrent client
+    nicotine-plus
+    #spotify downloader
+    spotdl
   ];
 
   programs.tmux.enable = true;

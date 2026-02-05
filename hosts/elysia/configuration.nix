@@ -33,21 +33,38 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
-  # Enable Wayland
   services.xserver = {
-  enable = true;
-  displayManager.gdm = {
     enable = true;
-    wayland = true;  # Enable Wayland
-  };
-  desktopManager.gnome.enable = true;
+
+    videoDrivers = [ "nvidia" ];
+
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+
+    desktopManager.gnome.enable = true;
+
+    xkb = {
+      layout = "gb";
+      variant = "";
+    };
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
+  hardware.nvidia = {
+    modesetting.enable = true;   # REQUIRED for Wayland
+    open = false;                # Correct for RTX 4070 Ti
+    nvidiaSettings = true;
+    powerManagement.enable = false;
   };
+
+  hardware.graphics = {
+    enable32Bit = true;          # REQUIRED for Steam
+  };
+
+  # Strongly recommended
+  boot.blacklistedKernelModules = [ "nouveau" ];
+
 
   # Configure console keymap
   console.keyMap = "uk";
