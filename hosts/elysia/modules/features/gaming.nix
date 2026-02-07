@@ -6,7 +6,9 @@
     #steam
     steam
 
-    #minecraft
-    
+    #for prismlauncher
+    prismlauncher
+    gsettings-desktop-schemas
+    xdg-desktop-portal
   ];
 }
