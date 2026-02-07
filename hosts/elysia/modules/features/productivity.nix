@@ -13,6 +13,9 @@
     nicotine-plus
     #spotify downloader
     spotdl
+    
+    #anime cli tool
+    ani-cli
   ];
 
   programs.tmux.enable = true;

@@ -12,8 +12,14 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    useOSProber = true;  # This will try to detect Windows
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+
 
   networking.hostName = "elysia"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -35,34 +41,28 @@
 
   services.xserver = {
     enable = true;
-
     videoDrivers = [ "nvidia" ];
-
     displayManager.gdm = {
       enable = true;
       wayland = true;
     };
-
     desktopManager.gnome.enable = true;
-
     xkb = {
       layout = "gb";
       variant = "";
     };
   };
-
+  
   hardware.nvidia = {
-    modesetting.enable = true;   # REQUIRED for Wayland
-    open = false;                # Correct for RTX 4070 Ti
+    modesetting.enable = true;
+    open = false;
     nvidiaSettings = true;
     powerManagement.enable = false;
   };
-
   hardware.graphics = {
-    enable32Bit = true;          # REQUIRED for Steam
+    enable32Bit = true;
   };
 
-  # Strongly recommended
   boot.blacklistedKernelModules = [ "nouveau" ];
 
 
@@ -133,25 +133,38 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # For prismlauncher
+  programs.dconf.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	vscode
-	discord
-	github-desktop
-  
-  #terminal
-  kitty
+    #for grub
+    os-prober
+    
+    vscode
+    discord
+    github-desktop
+    
+    #terminal
+    kitty
 
-  #npm
-  nodejs_22
-  git
+    #npm
+    nodejs_22
+    git
 
-  #ollama for Rache
-  ollama
+    #ollama for Rache
+    ollama
 
-  #spotify
-  spotify
+    #spotify
+    spotify
+
+    #for prismlauncher
+    prismlauncher
+    gsettings-desktop-schemas
+
+    #to try fix windows
+    efibootmgr
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

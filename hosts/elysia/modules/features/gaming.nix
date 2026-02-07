@@ -2,7 +2,11 @@
 
 {
   # Home Manager packages
-  home.packages = [
-    pkgs.steam
+  home.packages = with pkgs; [
+    #steam
+    steam
+
+    #minecraft
+    
   ];
 }
