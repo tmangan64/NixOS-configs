@@ -159,13 +159,18 @@
     #spotify
     spotify
 
-    #for prismlauncher
-    prismlauncher
-    gsettings-desktop-schemas
-
     #to try fix windows
     efibootmgr
+
+    prismlauncher
+
+    #logitech
+    solaar
   ];
+
+  environment.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "generic";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

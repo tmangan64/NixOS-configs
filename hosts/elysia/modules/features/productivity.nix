@@ -16,6 +16,9 @@
     
     #anime cli tool
     ani-cli
+
+    #file transfer for server
+    filezilla
   ];
 
   programs.tmux.enable = true;
