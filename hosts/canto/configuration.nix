@@ -37,13 +37,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
-  services.displayManager.gdm.wayland = false;
-  services.displayManager.defaultSession = "gnome-xorg";
-
-  services.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true; 
   programs.hyprland.enable = false;
-
  
 
   # Configure keymap in X11
@@ -159,6 +156,14 @@
 
 	#p7zip
     gnumake
+  
+  #libre office
+    libreoffice
+    zotero
+
+  #tor
+  tor
+  tor-browser
   ];
 
   virtualisation.virtualbox.host.enable = true;
