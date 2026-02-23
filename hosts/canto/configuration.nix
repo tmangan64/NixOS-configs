@@ -80,7 +80,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kiroshi = {
+  users.users.mizutani = {
     isNormalUser = true;
     description = "Teague Mangan";
     extraGroups = [ "networkmanager" "wheel" "vboxusers" ];

@@ -24,6 +24,14 @@
         ./hosts/elysia/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
+    
+    nixosConfigurations.canto = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs self; };
+      modules = [
+        ./hosts/elysia/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
+
     };
   };
 }
