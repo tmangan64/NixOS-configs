@@ -80,7 +80,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.mizutani = {
+  users.users.kiroshi = {
     isNormalUser = true;
     description = "Teague Mangan";
     extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
@@ -151,9 +151,6 @@
 	#github
 	  github-desktop
 
-	#n8n
-	  n8n
-
 	#p7zip
     gnumake
   
@@ -164,6 +161,10 @@
   #tor
   tor
   tor-browser
+
+  nicotine-plus
+
+  rpi-imager
   ];
 
   virtualisation.virtualbox.host.enable = true;
