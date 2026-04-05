@@ -8,5 +8,9 @@
 
     #for Minecraft
     prismlauncher
+
+    #mouse
+    piper
+    libratbag
   ];
 }

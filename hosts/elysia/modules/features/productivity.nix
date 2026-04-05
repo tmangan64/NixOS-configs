@@ -9,6 +9,10 @@
     # LibreOffice suite
     libreoffice
 
+    #references
+    zotero
+    jdk
+
     #soulseek music torrent client
     nicotine-plus
     #spotify downloader
@@ -19,6 +23,18 @@
 
     #file transfer for server
     filezilla
+
+    #:3
+    tor
+    tor-browser
+    protonvpn-gui
+
+    #cursor
+    code-cursor
+
+    google-chrome
+
+    jellyfin
   ];
 
   programs.tmux.enable = true;

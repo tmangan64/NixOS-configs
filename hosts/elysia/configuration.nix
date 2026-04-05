@@ -166,6 +166,8 @@
 
     #logitech
     solaar
+
+    python3
   ];
 
   environment.sessionVariables = {
