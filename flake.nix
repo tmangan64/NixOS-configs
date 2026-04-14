@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "NixOS config flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -15,15 +15,39 @@
     };
   };
 
-  outputs = { self, nixpkgs, curd, ... }@inputs: {
-    # use "nixos", or your hostname as the name of the configuration
-    # it's a better practice than "default" shown in the video
-    nixosConfigurations.elysia = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs self; };
-      modules = [
-        ./hosts/elysia/configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
+  outputs = { self, nixpkgs, curd, home-manager, ... }@inputs:
+  let
+    system = "x86_64-linux";
+  in
+  {
+    nixosConfigurations = {
+
+      elysia = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit inputs self curd;
+        };
+
+        modules = [
+          ./hosts/elysia/configuration.nix
+          home-manager.nixosModules.default
+        ];
+      };
+
+      canto = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit inputs self curd;
+        };
+
+        modules = [
+          ./hosts/canto/configuration.nix
+          home-manager.nixosModules.default
+        ];
+      };
+
     };
   };
 }

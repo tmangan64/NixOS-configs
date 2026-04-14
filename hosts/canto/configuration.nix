@@ -39,7 +39,7 @@
 
   services.displayManager.gdm.enable = true;
   services.displayManager.gdm.wayland = false;
-  services.displayManager.defaultSession = "gnome-xorg";
+  services.displayManager.defaultSession = "gnome";
 
   services.desktopManager.gnome.enable = true;
   programs.hyprland.enable = false;
@@ -136,28 +136,27 @@
 
     ani-cli
 
-	#forgot why
+	  #forgot why
 	  python314
 
-	#mdbook for NixOS guide
+	  #mdbook for NixOS guide
 	  mdbook
 
-	#desktop widget
+	  #desktop widget
 	  conky
     gnomeExtensions.vitals
     gnomeExtensions.extension-list
     gnomeExtensions.todo
 
-	#godot
+	  #godot
 	  godot
-
-	#github
+    lazygit
+    claude-code
+    
+	  #github
 	  github-desktop
 
-	#n8n
-	  n8n
-
-	#p7zip
+	  #p7zip
     gnumake
   ];
 
