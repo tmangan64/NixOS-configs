@@ -35,6 +35,13 @@
     google-chrome
 
     jellyfin
+
+    python3
+
+    #gamedev
+    godot
+    claude-code
+    lazygit
   ];
 
   programs.tmux.enable = true;

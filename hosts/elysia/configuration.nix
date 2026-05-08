@@ -42,16 +42,18 @@
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
-    desktopManager.gnome.enable = true;
     xkb = {
       layout = "gb";
       variant = "";
     };
   };
+
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
+
+  services.desktopManager.gnome.enable = true;
   
   hardware.nvidia = {
     modesetting.enable = true;
@@ -91,11 +93,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Enable fish shell system-wide (required for setting as default shell)
+  programs.fish.enable = true;
+
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.mizutani = {
     isNormalUser = true;
     description = "Teague Mangan";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -136,6 +142,8 @@
   # For prismlauncher
   programs.dconf.enable = true;
 
+  services.flatpak.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -165,9 +173,7 @@
     prismlauncher
 
     #logitech
-    solaar
-
-    python3
+    solaar    
   ];
 
   environment.sessionVariables = {
