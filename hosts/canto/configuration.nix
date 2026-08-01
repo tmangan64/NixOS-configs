@@ -86,7 +86,7 @@
   users.users.kiroshi = {
     isNormalUser = true;
     description = "Teague Mangan";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -96,11 +96,13 @@
   # Install programs
   programs.firefox.enable = true;
   programs.steam.enable = true;
+  programs.dconf.enable = true;
 
   #fish
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
+  services.tailscale.enable = true;
   
   services.fprintd.enable = false;
   security.pam.services.gdm.enable = true;
@@ -158,10 +160,16 @@
 
 	  #p7zip
     gnumake
+
+    libreoffice
+
+    obs-studio
+	sops
+
   ];
 
   virtualisation.virtualbox.host.enable = true;
-  boot.blacklistedKernelModules = [ "kvm_intel" "kvm" ];
+  users.extraGroups.vboxusers.members = [ "kiroshi" ];
 
 
   nix = {
