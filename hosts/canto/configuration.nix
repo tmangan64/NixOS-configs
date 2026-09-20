@@ -165,6 +165,7 @@
 
     obs-studio
 	sops
+	devenv #development
 
   ];
 
@@ -178,6 +179,8 @@
       experimental-features = nix-command flakes
     '';
   };
+
+  nix.settings.trusted-users = [ "root" "kiroshi" ];
 
 
   # Some programs need SUID wrappers, can be configured further or are
